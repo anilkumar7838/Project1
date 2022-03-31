@@ -169,9 +169,7 @@ exports.updateProfile = catchAsyncErrors(async(req,res,next)=>{
     })
 })
 
-// ************************************ Admin Rights Section ***************************************
-
-// ----------- Admin: Get User Details ----------
+// ----------- Get User Details ----------
 exports.getUserDetails = catchAsyncErrors(async(req,res,next)=>{
     const user =await User.findById(req.user.id);
     
@@ -180,6 +178,8 @@ exports.getUserDetails = catchAsyncErrors(async(req,res,next)=>{
         user
     });
 });
+
+// ************************************ Admin Rights Section ***************************************
 
 // ------------ Admin: Get All Users --------------
 

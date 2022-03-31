@@ -8,17 +8,6 @@ import { useSelector, useDispatch } from "react-redux";
 import Loader from "../views/Loader/Loader.js";
 import {useAlert} from "react-alert";
 
-// const product = {
-//   name: "Fancy-Tshirt",
-//   images: [
-//     {
-//       url: "https://rukminim2.flixcart.com/image/714/857/k05ljm80/t-shirt/c/2/g/xl-daredevil-party-wear-wrath-original-imafjzrzmchnjrfy.jpeg?q=50",
-//     },
-//   ],
-//   price: "300",
-//   _id: "Anil",
-// };
-
 const Home = () => {
   const alert=useAlert();
 
@@ -32,7 +21,7 @@ const Home = () => {
       return alert.error(error);
     }
     dispatch(getProduct());
-  }, [dispatch,error]);
+  }, [dispatch,error,alert]);
 
   return (
     <Fragment>
