@@ -37,6 +37,7 @@ export const getProductDetails = (id)=>async (dispatch)=>{
             payload: data.product,
         })
     }catch(error){
+        // console.log("acssdsdc");
         dispatch({
             type: PRODUCT_DETAILS_FAILURE,
             payload:error.response.data.message,
@@ -45,8 +46,8 @@ export const getProductDetails = (id)=>async (dispatch)=>{
 };
 
 //clearing errors
-export const clearErrors = ()=>async (dispatch)=>{
-    dispatch({
-        type:CLEAR_ERRORS,
-    })
-}
+// export const clearErrors = ()=>async (dispatch)=>{
+//     dispatch({
+//         type:CLEAR_ERRORS,
+//     })
+// }

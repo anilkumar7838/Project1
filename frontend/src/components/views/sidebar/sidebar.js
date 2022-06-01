@@ -12,6 +12,7 @@ import{FaHome} from "react-icons/fa"
 import{FiShoppingCart} from "react-icons/fi"
 import{FcAbout} from "react-icons/fc"
 import{FiPhoneCall} from "react-icons/fi"
+import{FiLogOut} from "react-icons/fi"
 import{FiSettings} from "react-icons/fi"
 import {BsQuestionCircle} from "react-icons/bs"
 // import { urlencoded } from "body-parser";
@@ -75,7 +76,7 @@ const MenuTabs = (item) => {
         <Divider className="divider"/>
         <List style={{marginLeft:"8px",marginRight:"8px",marginTop:"15px"}}>
             <ListItem className="list_item" onClick={closeNav}>
-                <div style={{marginLeft:"20px",fontSize:"14px"}}>LogOut</div>
+            <FiLogOut/><div style={{marginLeft:"20px",fontSize:"14px"}}><span>LogOut</span></div>
             </ListItem>
         </List>
         <Divider className="divider"/>

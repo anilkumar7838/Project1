@@ -20,9 +20,9 @@ function App() {
     <Router>
       <Header/>
       <Routes>
-        <Route exact path="/product/:id" component={ProductDetails}/>
+        {/* <Route path="product/:id" component = {ProductDetails}/> */}
+          <Route  path="product/:id" element={<ProductDetails/>}/>
         <Route path="/" element={<Home/>}/>
-        {/* <Route path="/product/:id" element={<ProductDetails/>}/> */}
       </Routes>
       <Footer/>
     </Router>
