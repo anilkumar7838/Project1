@@ -1,5 +1,6 @@
 import React from "react";
 import "./sidebar.css";
+import { Link,useNavigate } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import { IconButton } from "@mui/material";
 import Drawer from "@mui/material/Drawer";
@@ -20,14 +21,14 @@ import {BsQuestionCircle} from "react-icons/bs"
 
 const Sidebar = () => {
   const [state, setState] = React.useState(false);
+    const navigate = useNavigate();
+    const togglesidebar = (side, open) => (event) => {
+        setState({ ...state, [side]: open });
+    };
 
-const togglesidebar = (side, open) => (event) => {
-    setState({ ...state, [side]: open });
-};
-
-const closeNav=()=>{
-    setState(!state);
-}
+    const closeNav=()=>{
+        setState(!state);
+    }
 const MenuTabs = (item) => {
     return(<div className="container">
     <div className="closebtn" ><span onClick={closeNav}>&times;</span></div>
@@ -51,7 +52,10 @@ const MenuTabs = (item) => {
             <ListItem className="list_item" onClick={closeNav}>
                 <div className="img_style" ><FaHome/><span>Home</span></div>
             </ListItem>
-            <ListItem className="list_item" onClick={closeNav}>
+            <ListItem className="list_item" onClick={()=>{
+                navigate("/products");
+                closeNav();
+                }}>
                 <div className="img_style" ><FiShoppingCart/><span>Product</span></div>
             </ListItem>
             <ListItem className="list_item" onClick={closeNav}>

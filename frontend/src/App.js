@@ -6,6 +6,8 @@ import Header from './components/views/header/header.js';
 import Footer from './components/views/footer/footer.js';
 import Home from "./components/Home/Home.js";
 import ProductDetails from "./components/product/productDetails.js";
+import Products from "./components/product/product.js";
+import Search from "./components/product/search.js";
 function App() {
 
   React.useEffect(()=>{
@@ -20,9 +22,11 @@ function App() {
     <Router>
       <Header/>
       <Routes>
-        {/* <Route path="product/:id" component = {ProductDetails}/> */}
           <Route  path="product/:id" element={<ProductDetails/>}/>
         <Route path="/" element={<Home/>}/>
+        <Route path="/products" element={<Products/>}/>
+        <Route path="/product/:keyword" element={<Products/>}/>
+        <Route path="/search" element={<Search/>}/>
       </Routes>
       <Footer/>
     </Router>

@@ -2,6 +2,7 @@ import React from 'react'
 import "./header.css"
 import SearchIcon from "@mui/icons-material/Search"
 // import AppIcon from "@mui/icons-material/Apps"
+import { useNavigate } from 'react-router-dom'
 import { IconButton } from '@mui/material'
 import Avatar from "@mui/material/Avatar"
 import AvatarImg from '../../../assets/userImage/Profile.png'
@@ -9,7 +10,8 @@ import Img from '../../../assets/logo/logo1.jpg'
 import Sidebar from '../sidebar/sidebar.js'
 
 
-const header = () => {
+const Header = () => {
+  const navigate = useNavigate();
     return (
         <>
           <div className="header">
@@ -27,7 +29,7 @@ const header = () => {
                 <input type="text" name="search" placeholder='search' />
             </div>   */}
             <div className="header_right">
-              <IconButton>
+              <IconButton onClick={()=>{navigate("/search")}}>
                 <SearchIcon id="search"/>
               </IconButton>
               {/* <IconButton>
@@ -43,4 +45,4 @@ const header = () => {
     )
 }
 
-export default header
+export default Header
