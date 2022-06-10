@@ -6,7 +6,7 @@ const Apifeatures= require("../utils/apifeatures");
 // --------------- Get All Product -------------
 
 exports.getAllProducts =catchAsyncErrors(async (req,res,next)=>{
-    const resultPerPage=8;
+    const resultPerPage=3;
     // for Dashboard
     const productCount = await Product.countDocuments();
     
