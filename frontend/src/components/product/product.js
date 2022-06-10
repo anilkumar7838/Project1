@@ -13,36 +13,35 @@ const Product = () => {
   const alert=useAlert();
   const params = useParams();
   const keyword=params.keyword;
-
   const [currentPage,setCurrentPage] = useState(1);
-
-  const {products,loading,error,productCount,resultPerPage} = useSelector((state)=>state.products);
+  const productResponse = useSelector((state) => state.products);
 
   const setCurrentPageNo =(e)=>{
     setCurrentPage(e);
   }
-
   useEffect(()=>{
-    if(error){
-      alert.error(error);
+    if(productResponse.error){
+      alert.error(productResponse.error);
       dispatch(clearErrors());
     }
     dispatch(getProduct(keyword,currentPage));
-  },[dispatch,alert,error,keyword,currentPage])
+  },[dispatch,alert,productResponse.error,keyword,currentPage])
   return (
     <>
-      {loading ? <Loader/> : 
+      {productResponse.loading ? <Loader/> : 
       <Fragment>
           <h2 className="productsHeading">Products</h2>
           <div className="products">
-            {products && products.map((product)=>(
+            {productResponse.products && productResponse.products.map((product)=>(
               <ProductCard key={product._id} product={product}/>
             ))}
           </div>
+          {
+            productResponse.productCount && productResponse.productCount>0 ?
           <div className="paginationBox">
             <Pagination activePage={currentPage}
-            itemsCountPerPage={resultPerPage}
-            totalItemsCount={productCount}
+            itemsCountPerPage={productResponse.resultPerPage}
+            totalItemsCount={productResponse.productCount}
             onChange={setCurrentPageNo}
             nextPageText="Next"
             prevPageText="Prev"
@@ -52,7 +51,8 @@ const Product = () => {
             linkClass="page-link"
             activeClass="pageItemActive"
             activeLinkClass="pageLinkActive"/>
-          </div>
+          </div>:null
+          }
       </Fragment>}
     </>
   )

@@ -13,7 +13,6 @@ import {
 export const getProduct = (keyword="",currentPage=1)=>async (dispatch)=>{
     try{
         dispatch({type:ALL_PRODUCT_REQUEST});
-        console.log(keyword);
         let link=`/api/v1/products/?keyword=${keyword}&page=${currentPage}`
         const {data} = await axios.get(link);
         dispatch({
@@ -38,7 +37,6 @@ export const getProductDetails = (id)=>async (dispatch)=>{
             payload: data.product,
         })
     }catch(error){
-        // console.log("acssdsdc");
         dispatch({
             type: PRODUCT_DETAILS_FAILURE,
             payload:error.response.data.message,
