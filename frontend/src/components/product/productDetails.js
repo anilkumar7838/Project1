@@ -9,7 +9,7 @@ import { Rating } from "@mui/lab";
 import ReviewCard from "./reviewCard.js";
 import Loader from "../views/Loader/Loader"
 import {useAlert} from "react-alert"
-
+import MetaData from "../views/metaData";
 // state not created
 const ProductDetails = () => {
   const dispatch = useDispatch();
@@ -39,6 +39,7 @@ const ProductDetails = () => {
         <Loader />
       ) : (
         <Fragment>
+          <MetaData title={`${product.name}--UnLimitIt`}/>
           <div className="productDetails">
             <div className="section-1-1">
               <Carousel>

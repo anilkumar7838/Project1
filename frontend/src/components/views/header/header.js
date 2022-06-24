@@ -9,7 +9,6 @@ import AvatarImg from '../../../assets/userImage/Profile.png'
 import Img from '../../../assets/logo/logo1.jpg'
 import Sidebar from '../sidebar/sidebar.js'
 
-
 const Header = () => {
   const navigate = useNavigate();
     return (
@@ -35,7 +34,7 @@ const Header = () => {
               {/* <IconButton>
                 <AppIcon/>
               </IconButton> */}
-              <IconButton>
+              <IconButton onClick={()=>{navigate("login")}}>
                 <Avatar src={AvatarImg} alt="failed-to-fetch"/>
               </IconButton>
             </div>  

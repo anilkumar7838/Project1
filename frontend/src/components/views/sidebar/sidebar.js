@@ -49,7 +49,10 @@ const MenuTabs = (item) => {
         <Divider className="divider"/>
 
         <List style={{marginLeft:"8px",marginRight:"8px",marginTop:"15px"}}>
-            <ListItem className="list_item" onClick={closeNav}>
+            <ListItem className="list_item" onClick={()=>{
+                navigate("/");
+                closeNav();
+                }}>
                 <div className="img_style" ><FaHome/><span>Home</span></div>
             </ListItem>
             <ListItem className="list_item" onClick={()=>{

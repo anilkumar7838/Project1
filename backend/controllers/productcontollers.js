@@ -12,15 +12,18 @@ exports.getAllProducts =catchAsyncErrors(async (req,res,next)=>{
     
     const apiFeature = new Apifeatures(Product.find(),req.query)
     .search()
-    .filter().pagination(resultPerPage);
-    const products= await apiFeature.query ;    // for particular keyword
-    // const products= await Product.find(); // for all
+    .filter()
+    let products = await apiFeature.query;
+    let filterProductCount = products.length;
+    apiFeature.pagination(resultPerPage);
+    // products= await apiFeature.query ;    
     
     res.status(200).json({
         success:true,
         products,
         productCount,
         resultPerPage,
+        filterProductCount,
     });
 });
 
