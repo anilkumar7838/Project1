@@ -6,17 +6,16 @@ const Apifeatures= require("../utils/apifeatures");
 // --------------- Get All Product -------------
 
 exports.getAllProducts =catchAsyncErrors(async (req,res,next)=>{
-    const resultPerPage=8;
+    const resultPerPage=4;
     // for Dashboard
     const productCount = await Product.countDocuments();
     
     const apiFeature = new Apifeatures(Product.find(),req.query)
     .search()
+    .pagination(resultPerPage)
     .filter()
     let products = await apiFeature.query;
-    let filterProductCount = products.length;
-    apiFeature.pagination(resultPerPage);
-    // products= await apiFeature.query ;    
+    let filterProductCount = products.length;    
     
     res.status(200).json({
         success:true,
