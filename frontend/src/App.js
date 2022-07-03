@@ -9,14 +9,20 @@ import ProductDetails from "./components/product/productDetails.js";
 import Products from "./components/product/product.js";
 import Search from "./components/product/search.js";
 import LoginSignUp from './components/User/LoginSignUp';
-function App() {
+import store from "./store";
+import { loadUser } from './actions/userAction';
+// import { useSelector } from "react-redux";
+import Profile from "./components/User/Profile";
 
+function App() {
+  // const { isAuthenticated, user } = useSelector((state) => state.user);
   React.useEffect(()=>{
     WebFont.load({
       google:{
         families:["Roboto","Droid Sans","chilanka"],
       }
-    })
+    });
+    store.dispatch(loadUser())
   },[]);
 
   return (
@@ -28,6 +34,7 @@ function App() {
         <Route path="/products" element={<Products/>}/>
         <Route path="/products/:keyword" element={<Products/>}/>
         <Route path="/search" element={<Search/>}/>
+        <Route path="/account" element={<Profile/>}/>
         <Route path="/login" element={<LoginSignUp/>}/>
       </Routes>
       <Footer/>

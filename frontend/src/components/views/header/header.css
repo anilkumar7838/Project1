@@ -23,7 +23,7 @@
 
 .info{
   color:#5f6368;
-  font-size: 1.5vmax;
+  font-size: 1.4vmax;
   padding-left:5px;
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -58,5 +58,10 @@
 } */
 
 #header_img{
-  width:2.5vmax;
+  width:1.9vmax;
+}
+
+#userLogo{
+  width:3vmax;
+  height:3vmax;
 }

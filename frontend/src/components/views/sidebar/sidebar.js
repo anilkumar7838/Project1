@@ -30,16 +30,14 @@ const Sidebar = () => {
         setState(!state);
     }
 const MenuTabs = (item) => {
-    return(<div className="container">
+    return(
+    <div className="container">
     <div className="closebtn" ><span onClick={closeNav}>&times;</span></div>
     <div style={{ width: "250px" }} >
-        {/* <Divider className="divider"/> */}
         <List style={{width:"250px",height:"100px"}}>
           <ListItem>
                 <ListItemText style={{fontSize:"48px",marginLeft:"20px"}}>
                     <span className="list_style" style={ {fontSize:"35px",fontWeight:"1000"}}>U</span>
-                    {/* <span className="list_style">alaxy</span> */}
-                    {/* <span className="list_style" > </span> */}
                     <span className="list_style" style={{fontWeight:"700"}}>nLimit</span>
                     <span className="list_style" style={{marginRight:"10px"}}>It</span>
                 </ListItemText>
@@ -95,7 +93,7 @@ const MenuTabs = (item) => {
   return (
     <>
         <IconButton onClick={togglesidebar("left", true)}>
-            <MenuIcon />
+            <MenuIcon style={{fontSize:"2vmax"}} />
         </IconButton>
         <Drawer
             open={state["left"]}

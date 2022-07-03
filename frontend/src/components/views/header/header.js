@@ -1,15 +1,17 @@
 import React from 'react'
 import "./header.css"
 import SearchIcon from "@mui/icons-material/Search"
-// import AppIcon from "@mui/icons-material/Apps"
+import UserOptions from './UserOptions.js';
 import { useNavigate } from 'react-router-dom'
 import { IconButton } from '@mui/material'
 import Avatar from "@mui/material/Avatar"
 import AvatarImg from '../../../assets/userImage/Profile.png'
 import Img from '../../../assets/logo/logo1.jpg'
 import Sidebar from '../sidebar/sidebar.js'
+import { useSelector } from 'react-redux';
 
 const Header = () => {
+  const {isAuthenticated,user} = useSelector(state=>state.user)
   const navigate = useNavigate();
     return (
         <>
@@ -21,22 +23,16 @@ const Header = () => {
                   Un Limit It
                 </div>
             </div>  
-            {/* <div className="header_search">
-              <IconButton>
-                <SearchIcon/>
-              </IconButton>
-                <input type="text" name="search" placeholder='search' />
-            </div>   */}
             <div className="header_right">
+              {isAuthenticated ? <UserOptions user={user}/>:
+              <>
               <IconButton onClick={()=>{navigate("/search")}}>
-                <SearchIcon id="search"/>
+                <SearchIcon style={{fontSize:"2vmax"}}  id="search"/>
               </IconButton>
-              {/* <IconButton>
-                <AppIcon/>
-              </IconButton> */}
               <IconButton onClick={()=>{navigate("login")}}>
-                <Avatar src={AvatarImg} alt="failed-to-fetch"/>
+                <Avatar src={AvatarImg} alt="failed-to-fetch" id="userLogo"/>
               </IconButton>
+              </>}
             </div>  
 
           </div>
