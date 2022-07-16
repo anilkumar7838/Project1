@@ -20,6 +20,7 @@
 }
 
 .profileContainer > div:first-child > h1 {
+  margin-top: 6vmax;
   color: rgba(0, 0, 0, 0.555);
   font: 500 2.2vmax "Roboto";
   transform: translateX(-10vmax) translateY(-2vmax);
@@ -53,7 +54,7 @@
 }
 
 .profileContainer > div:last-child {
-  justify-content: space-evenly;
+  justify-content:center;
   align-items: flex-start;
   padding: 5vmax;
   box-sizing: border-box;
@@ -62,12 +63,15 @@
 .profileContainer > div:last-child > div > h4 {
   color: black;
   font: 400 1.2vmax "Roboto";
+  margin-top: 4vmax;
+  margin-bottom: 12px;
 }
 
 .profileContainer > div:last-child > div > p {
   color: rgba(0, 0, 0, 0.418);
   font: 400 1vmax cursive;
-  margin: 0.2vmax;
+  margin-top: 12px;
+  margin-bottom: 3vmax;
 }
 
 .profileContainer > div:last-child > div:last-child {
@@ -92,7 +96,7 @@
   background-color: rgb(31, 31, 31);
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
   .profileContainer {
     flex-direction: column;
   }

@@ -1,16 +1,19 @@
 import React, { Fragment, useState, useEffect } from "react";
 import "./ResetPassword.css";
-import Loader from "../layout/Loader/Loader";
+import Loader from "../views/Loader/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, resetPassword } from "../../actions/userAction";
 import { useAlert } from "react-alert";
-import MetaData from "../layout/MetaData";
-import LockOpenIcon from "@material-ui/icons/LockOpen";
-import LockIcon from "@material-ui/icons/Lock";
+import MetaData from "../views/metaData";
+import LockOpenIcon from "@mui/icons-material/LockOpen";
+import LockIcon from "@mui/icons-material/Lock";
+import { useNavigate, useParams } from "react-router-dom";
 
-const ResetPassword = ({ history, match }) => {
+const ResetPassword = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
+  const navigate = useNavigate();
+  const params = useParams();
 
   const { error, success, loading } = useSelector(
     (state) => state.forgotPassword
@@ -27,7 +30,7 @@ const ResetPassword = ({ history, match }) => {
     myForm.set("password", password);
     myForm.set("confirmPassword", confirmPassword);
 
-    dispatch(resetPassword(match.params.token, myForm));
+    dispatch(resetPassword(params.token, myForm));
   };
 
   useEffect(() => {
@@ -38,10 +41,9 @@ const ResetPassword = ({ history, match }) => {
 
     if (success) {
       alert.success("Password Updated Successfully");
-
-      history.push("/login");
+      navigate("/login");
     }
-  }, [dispatch, error, alert, history, success]);
+  }, [dispatch, error, alert, success]);
 
   return (
     <Fragment>

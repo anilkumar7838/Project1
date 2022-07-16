@@ -1,9 +1,10 @@
 import React from 'react'
-import {Link} from "react-router-dom";
+import {Link,useNavigate} from "react-router-dom";
 import ReactStars from "react-rating-stars-component";
 
 const ProductCard = ({product}) => {
 
+  const navigate=useNavigate();
   const options={
     edit:false,
     color:"rgba(20,20,20,0.1)",
@@ -14,7 +15,7 @@ const ProductCard = ({product}) => {
   }
 
   return (
-    <Link className='productCard' to={`product/${product._id}`}>
+    <div className='productCard' onClick={()=>{navigate(`/product/${product._id}`)}}>
         <img src={product.images[0].url} alt = {product.name}/>
         <p>{product.name}</p>
         <div>
@@ -22,7 +23,7 @@ const ProductCard = ({product}) => {
             <span>{product.numOfReviews} Reviews</span> 
         </div>
         <span>{`₹${product.price}`}</span>
-    </Link>
+    </div>
   )
 }
 

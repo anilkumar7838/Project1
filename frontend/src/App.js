@@ -14,9 +14,13 @@ import { loadUser } from './actions/userAction';
 import { useSelector } from "react-redux";
 import Profile from "./components/User/Profile";
 import ProtectedRoute from './components/Route/protectedRoute';
+import UpdateProfile from "./components/User/UpdateProfile";
+import UpdatePassword from"./components/User/UpdatePassword";
+import ForgotPassword from"./components/User/ForgotPassword";
+import ResetPassword from"./components/User/ResetPassword";
+import Cart from "./components/Cart/Cart"
 
 function App() {
-  const { isAuthenticated, user } = useSelector((state) => state.user);
   React.useEffect(()=>{
     WebFont.load({
       google:{
@@ -30,13 +34,18 @@ function App() {
     <Router>
       <Header/>
       <Routes>
-          <Route  path="product/:id" element={<ProductDetails/>}/>
+        <Route  path="product/:id" element={<ProductDetails/>}/>
         <Route path="/" element={<Home/>}/>
         <Route path="/products" element={<Products/>}/>
         <Route path="/products/:keyword" element={<Products/>}/>
         <Route path="/search" element={<Search/>}/>
-        <Route path="/account" element={<ProtectedRoute><Profile/></ProtectedRoute>}/>
         <Route path="/login" element={<LoginSignUp/>}/>
+        <Route path="/cart" element={<Cart/>}/>
+        <Route path="/password/forgot" element={<ForgotPassword/>}/>
+        <Route path="/password/reset/:token" element={<ResetPassword/>}/>
+        <Route path="/account" element={<ProtectedRoute><Profile/></ProtectedRoute>}/>
+        <Route path="/me/update" element={<ProtectedRoute><UpdateProfile/></ProtectedRoute>}/>
+        <Route path="/password/update" element={<ProtectedRoute><UpdatePassword/></ProtectedRoute>}/>
       </Routes>
       <Footer/>
     </Router>

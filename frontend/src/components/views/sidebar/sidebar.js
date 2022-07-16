@@ -8,12 +8,13 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import Divider from "@mui/material/Divider";
-
+import SearchIcon from '@mui/icons-material/Search';
 import{FaHome} from "react-icons/fa"
 import{FiShoppingCart} from "react-icons/fi"
 import{FcAbout} from "react-icons/fc"
 import{FiPhoneCall} from "react-icons/fi"
-import{FiLogOut} from "react-icons/fi"
+import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
+// import{FiLogOut} from "react-icons/fi"
 import{FiSettings} from "react-icons/fi"
 import {BsQuestionCircle} from "react-icons/bs"
 // import { urlencoded } from "body-parser";
@@ -66,6 +67,19 @@ const MenuTabs = (item) => {
                 <div className="img_style" ><FiPhoneCall/><span>Contact</span></div>
             </ListItem>
         </List>
+
+        <Divider className="divider"/>
+        <List style={{marginLeft:"8px",marginRight:"8px"}} onClick={()=>{navigate("/search")}}>
+            <ListItem className="list_item" onClick={closeNav}>
+            <SearchIcon/><div style={{marginLeft:"20px",fontSize:"14px"}}><span>Search</span></div>
+            </ListItem>
+        </List>
+        <List style={{marginLeft:"8px",marginRight:"8px",marginTop:"-16px"}} onClick={()=>{navigate("/cart")}}>
+            <ListItem className="list_item" onClick={closeNav}>
+            <ShoppingBagIcon/><div style={{marginLeft:"20px",fontSize:"14px"}}><span>My Cart</span></div>
+            </ListItem>
+        </List>
+
         <Divider className="divider"/>
         <List style={{marginLeft:"8px",marginRight:"8px",marginTop:"15px"}}>
             <ListItem className="list_item" onClick={closeNav}>
@@ -75,13 +89,6 @@ const MenuTabs = (item) => {
             <ListItem className="list_item" onClick={closeNav}>
                 <BsQuestionCircle/>
                 <div style={{marginLeft:"20px",fontSize:"14px",fontWeight:"500"}} >Help & FeedBack</div>
-            </ListItem>
-        </List>
-
-        <Divider className="divider"/>
-        <List style={{marginLeft:"8px",marginRight:"8px",marginTop:"15px"}}>
-            <ListItem className="list_item" onClick={closeNav}>
-            <FiLogOut/><div style={{marginLeft:"20px",fontSize:"14px"}}><span>LogOut</span></div>
             </ListItem>
         </List>
         <Divider className="divider"/>

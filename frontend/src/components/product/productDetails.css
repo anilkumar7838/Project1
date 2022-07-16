@@ -1,5 +1,4 @@
 .productDetails {
-    /* background-color: rgb(244, 240, 240); */
     width: 100vw;
     max-width: 100%;
     padding: 6vmax;
@@ -9,11 +8,8 @@
 
   .section-1-1 {
     width: 100%;
-    /* display: inline-block; */
-    /* flex-direction: column; */
     justify-content: center;
     align-items:center;
-    /* padding: 2vmax; */
     box-sizing: border-box;
     border: 1px solid white;
   }
@@ -92,7 +88,7 @@
   .detailsBlock-3-1-1 > input {
     border: none;
     padding: 0.5vmax;
-    width: 1vmax;
+    width: 2vmax;
     min-height: 2vmax;
     text-align: center;
     outline: none;
@@ -209,13 +205,13 @@
     color: rgba(0, 0, 0, 0.548);
   }
   
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 680px) {
     .productDetails {
       flex-direction: column;
       height: unset;
     }
     .CarouselImage{
-      margin:12px 37%;
+      margin:12px 38%;
     }
     .productDetails > div:last-child {
       align-items: center;
@@ -251,14 +247,16 @@
       padding: 2vmax 0;
     }
     .detailsBlock-3-1-1 > button {
-      padding: 1.2vmax;
-      width: 4vmax;
+      padding: 1vmax;
+      align-items: center;
+      padding-right: 1.4vmax;
+      width: 1.5vmax;
     }
     
     .detailsBlock-3-1-1 > input {
-      padding: 1.5vmax;
+      padding: 1vmax;
       width: 3vmax;
-      font: 400 1.8vmax "Roboto";
+      font: 400 1.5vmax "Roboto";
     }
     
     .detailsBlock-3-1 > button:last-child {
@@ -297,7 +295,7 @@
     }
   }
   
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 420px) {
     .CarouselImage{
       margin: 12px 30%;
       padding: 0 auto;

@@ -8,7 +8,7 @@ import "./Profile.css";
 const Profile = () => {
   const navigate=useNavigate();
   const userRes = useSelector((state) => state.user);
-  console.log(userRes.isAuthenticated)
+  
   useEffect(() => {
     if (!userRes.isAuthenticated) {
       navigate("/login");

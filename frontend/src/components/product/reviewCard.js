@@ -12,8 +12,8 @@ const ReviewCard = ({ review }) => {
   return (
     <div className="reviewCard">
       <img src={profilePng} alt="User" />
-      <p>{review.name}</p>
-      <Rating {...options} />
+      <p style={{fontSize:"1.6vmax"}}>{review.name}</p>
+      <Rating {...options}style={{fontSize:"2vmax"}} />
       <span className="reviewCardComment">{review.comment}</span>
     </div>
   );

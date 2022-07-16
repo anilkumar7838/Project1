@@ -9,6 +9,7 @@ import AvatarImg from '../../../assets/userImage/Profile.png'
 import Img from '../../../assets/logo/logo1.jpg'
 import Sidebar from '../sidebar/sidebar.js'
 import { useSelector } from 'react-redux';
+import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 
 const Header = () => {
   const {isAuthenticated,user} = useSelector(state=>state.user)
@@ -28,6 +29,9 @@ const Header = () => {
               <>
               <IconButton onClick={()=>{navigate("/search")}}>
                 <SearchIcon style={{fontSize:"2vmax"}}  id="search"/>
+              </IconButton>
+              <IconButton onClick={()=>{navigate("/cart")}}>
+                <ShoppingBagIcon style={{fontSize:"2vmax"}}  id="search"/>
               </IconButton>
               <IconButton onClick={()=>{navigate("login")}}>
                 <Avatar src={AvatarImg} alt="failed-to-fetch" id="userLogo"/>
