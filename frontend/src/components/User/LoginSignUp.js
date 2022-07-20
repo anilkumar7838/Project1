@@ -1,7 +1,7 @@
 import React, { Fragment, useRef, useState, useEffect } from "react";
 import "./LoginSignUp.css";
 import Loader from "../views/Loader/Loader";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import FaceIcon from "@mui/icons-material/Face";
@@ -9,12 +9,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, login, register } from "../../actions/userAction";
 import { useAlert } from "react-alert";
 
-const LoginSignUp = () => {
+const LoginSignUp = ({location}) => {
   const dispatch = useDispatch();
   const alert = useAlert();
+  const [searchParams] = useSearchParams();
+  let val;
+  for (const entry of searchParams.entries()) {
+    const [param, value] = entry;
+    val=value;
+    // console.log(param, value);
+  }
   const navigate = useNavigate();
 
-  // const { error, loading, isAuthenticated } = useSelector(
   const userResponse = useSelector((state)=>state.user);
 
   const loginTab = useRef(null);
@@ -69,7 +75,7 @@ const LoginSignUp = () => {
     }
   };
 
-  // const redirect = location.search ? location.search.split("=")[1] : "/account";
+  const redirect = val ? `${val}` : "account";
 
   useEffect(() => {
     if (userResponse.error) {
@@ -78,11 +84,12 @@ const LoginSignUp = () => {
     }
 
     if (userResponse.isAuthenticated) {
-      // navigate(`/${redirect}`);
-      navigate(`/account`);
+      // console.log(redirect);
+      navigate(`/${redirect}`);
+      // navigate(`/account`);
     }
-  // }, [dispatch, error, alert, isAuthenticated, redirect]);
-  }, [dispatch, userResponse.error,alert, userResponse.isAuthenticated]);
+ 
+  }, [dispatch, userResponse.error,alert, userResponse.isAuthenticated, redirect]);
 
   const switchTabs = (e, tab) => {
     if (tab === "login") {

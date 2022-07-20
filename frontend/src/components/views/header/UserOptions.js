@@ -6,7 +6,7 @@ import {logout} from "../../../actions/userAction"
 import { ExitToApp,ListAlt,Dashboard ,ShoppingCart , Person} from '@mui/icons-material'
 import { useNavigate } from 'react-router-dom'
 import { useAlert } from 'react-alert'
-import { useDispatch } from 'react-redux'
+import { useDispatch ,useSelector} from 'react-redux'
 import {Backdrop} from '@mui/material'
 
 const UserOptions = ({user}) => {
@@ -14,19 +14,19 @@ const UserOptions = ({user}) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [open,setOpen]=useState(false);
-    // const { cartItems } = useSelector((state) => state.cart);
+    const { cartItems } = useSelector((state) => state.cart);
     const options = [
         { icon: <ListAlt/>, name: "Orders", func: orders },
         { icon: <Person/>, name: "Profile", func: account },
-        // {
-        //   icon: (
-        //     <ShoppingCart
-        //       style={{ color: cartItems.length > 0 ? "tomato" : "unset" }}
-        //     />
-        //   ),
-        //   name: `Cart(${cartItems.length})`,
-        //   func: cart,
-        // },
+        {
+          icon: (
+            <ShoppingCart
+              style={{ color: cartItems.length > 0 ? "tomato" : "unset" }}
+            />
+          ),
+          name: `Cart(${cartItems.length})`,
+          func: cart,
+        },
         { icon: <ExitToApp />, name: "Logout", func: logoutUser },
       ];
 

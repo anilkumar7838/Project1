@@ -73,8 +73,8 @@
   
   .cartInput > input {
     border: none;
-    padding: 0.6vmax;
-    width: 2vmax;
+    padding: 0.4vmax;
+    width: 3.5vmax;
     text-align: center;
     outline: none;
     font: 400 1vmax "Roboto";
@@ -125,7 +125,7 @@
   
   @media screen and (max-width: 600px) {
     .cartPage {
-      margin-top: 40px;
+      margin-top: 45px;
       padding: 0;
       min-height: 60vh;
     }
@@ -150,13 +150,14 @@
     }
   
     .cartInput > input {
-      width: 3vmax;
+      width: 4.5vmax;
       padding: 1vmax;
       font: 400 1.8vmax "Roboto";
     }
   
     .cartSubtotal {
       padding: 1.5vmax;
+      padding-left: 0;
       height: 20vmax;
       font: 300 2vmax "Roboto";
     }
