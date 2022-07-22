@@ -22,9 +22,13 @@ import Cart from "./components/Cart/Cart";
 import Shipping from "./components/Cart/Shipping";
 import ConfirmOrder from "./components/Cart/ConfirmOrder";
 import Payment from "./components/Cart/Payment";
+import OrderSuccess from "./components/Cart/OrderSuccess";
+import MyOrders from "./components/Order/MyOrders";
+import OrderDetails from "./components/Order/OrderDetails";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
+import Dashboard from "./components/Admin/Dashboard";
 
 function App() {
   // const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -100,16 +104,49 @@ function App() {
             </ProtectedRoute>
           }
         />
-
+        <Route
+          path="/order/:id"
+          element={
+            <ProtectedRoute>
+              <OrderDetails />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/success"
+          element={
+            <ProtectedRoute>
+              <OrderSuccess />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/orders"
+          element={
+            <ProtectedRoute>
+              <MyOrders />
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/process/payment"
           element={
             <ProtectedRoute>
-              {stripeApiKey && <Elements stripe={loadStripe(stripeApiKey)}>
-                <Payment />
-              </Elements>}
+              {stripeApiKey && (
+                <Elements stripe={loadStripe(stripeApiKey)}>
+                  <Payment />{" "}
+                </Elements>
+              )}
             </ProtectedRoute>
           }
+        />
+      <Route
+        path="/admin/dashboard"
+        element={
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        }
         />
       </Routes>
       <Footer />

@@ -18,8 +18,8 @@ input[ttype="number"]{
 }
 
 .greenColor{
-    color:rgb(63, 254, 63);
+    color:rgb(63, 254, 63) !important;
 }
 .redColor{
-    color:tomato;
+    color:tomato !important;
 }
