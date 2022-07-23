@@ -9,8 +9,9 @@
   padding: 0;
 }
 .sidebar2 > a > img {
-  margin-left: 2vmax;
-  width: 80%;
+  margin-top: 12px;
+  margin-left: 4vmax;
+  width: 60%;
   transition: all 0.5s;
 }
 
