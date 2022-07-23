@@ -10,10 +10,10 @@ import {
 
 
 import {
-    // allUsersReducer,
+    allUsersReducer,
     forgotPasswordReducer,
     profileReducer,
-    // userDetailsReducer,
+    userDetailsReducer,
     userReducer,
   } from "./reducers/userReducer";
 

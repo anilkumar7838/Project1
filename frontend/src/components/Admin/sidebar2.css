@@ -42,9 +42,12 @@
 }
 
 @media screen and (max-width:600px) {
+  .sidebar2 > a{
+    display: flex;
+  }
   .sidebar2 > a > img {
-    margin-left: 7vmax;
     width: 40%;
+    margin:12px auto;
     transition: all 0.5s;
   }
 }
