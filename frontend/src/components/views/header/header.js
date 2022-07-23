@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import { IconButton } from '@mui/material'
 import Avatar from "@mui/material/Avatar"
 import AvatarImg from '../../../assets/userImage/Profile.png'
-import Img from '../../../images.logo2.png'
+import Img from '../../../images/logo3.png'
 import Sidebar from '../sidebar/sidebar.js'
 import { useSelector } from 'react-redux';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';

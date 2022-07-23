@@ -1,6 +1,6 @@
 import React from "react";
-import "./sidebar.css";
-import logo from "../../images/logo2.png";
+import "./sidebar2.css";
+import logo from "../../images/logo3.png";
 import { Link } from "react-router-dom";
 import { TreeView, TreeItem } from "@mui/lab";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -14,7 +14,7 @@ import RateReviewIcon from "@mui/icons-material/RateReview";
 
 const Sidebar = () => {
   return (
-    <div className="sidebar">
+    <div className="sidebar2">
       <Link to="/">
         <img src={logo} alt="UNLIMITIT" />
       </Link>
@@ -23,7 +23,7 @@ const Sidebar = () => {
           <DashboardIcon /> Dashboard
         </p>
       </Link>
-      <Link>
+      <Link to="#">
         <TreeView
           defaultCollapseIcon={<ExpandMoreIcon />}
           defaultExpandIcon={<ImportExportIcon />}

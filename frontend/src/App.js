@@ -29,6 +29,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 import Dashboard from "./components/Admin/Dashboard";
+import ProductList from "./components/Admin/ProductList";
 
 function App() {
   // const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -52,6 +53,7 @@ function App() {
   }, []);
 
   return (
+    <>
     <Router>
       <Header />
       <Routes>
@@ -143,14 +145,22 @@ function App() {
       <Route
         path="/admin/dashboard"
         element={
-          <ProtectedRoute>
+          <ProtectedRoute isAdmin={true}>
             <Dashboard />
           </ProtectedRoute>
         }
         />
+      <Route
+        path="/admin/products"
+        element={
+          <ProtectedRoute isAdmin={true}>
+            <ProductList />
+          </ProtectedRoute>
+        }
+        />
       </Routes>
-      <Footer />
     </Router>
+      <Footer /></>
   );
 }
 

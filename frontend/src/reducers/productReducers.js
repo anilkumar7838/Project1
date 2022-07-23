@@ -34,8 +34,9 @@ import {
   CLEAR_ERRORS,
 } from "../constants/productConstants";
 
-export const productReducer = (state = { products: [] }, action) => {
+export const productsReducer = (state = { products: [] }, action) => {
   switch (action.type) {
+    case ADMIN_PRODUCT_REQUEST:
     case ALL_PRODUCT_REQUEST:
       return {
         loading: true,
@@ -50,7 +51,15 @@ export const productReducer = (state = { products: [] }, action) => {
         filterProductCount:action.payload.filterProductCount,
         error: action.payload.error,
       };
+
+    case ADMIN_PRODUCT_SUCCESS:
+      return{
+        loading:false,
+        products:action.payload,
+      };
+
     case ALL_PRODUCT_FAILURE:
+    case ADMIN_PRODUCT_FAIL:
       return {
         loading: false,
         error: action.payload,
@@ -92,35 +101,44 @@ export const productDetailsReducer = (state = { product: [] }, action) => {
   }
 };
 
-export const productsReducer = (state = { products: [] }, action) => {
+export const productReducer = (state = {}, action) => {
   switch (action.type) {
-    case ALL_PRODUCT_REQUEST:
-    case ADMIN_PRODUCT_REQUEST:
+    case DELETE_PRODUCT_REQUEST:
+    case UPDATE_PRODUCT_REQUEST:
       return {
+        ...state,
         loading: true,
-        products: [],
       };
-    case ALL_PRODUCT_SUCCESS:
+    case DELETE_PRODUCT_SUCCESS:
       return {
+        ...state,
         loading: false,
-        products: action.payload.products,
-        productsCount: action.payload.productsCount,
-        resultPerPage: action.payload.resultPerPage,
-        filteredProductsCount: action.payload.filteredProductsCount,
+        isDeleted: action.payload,
       };
 
-    case ADMIN_PRODUCT_SUCCESS:
+    case UPDATE_PRODUCT_SUCCESS:
       return {
+        ...state,
         loading: false,
-        products: action.payload,
+        isUpdated: action.payload,
       };
-    case ALL_PRODUCT_FAILURE:
-    case ADMIN_PRODUCT_FAIL:
+    case DELETE_PRODUCT_FAIL:
+    case UPDATE_PRODUCT_FAIL:
       return {
+        ...state,
         loading: false,
         error: action.payload,
       };
-
+    case DELETE_PRODUCT_RESET:
+      return {
+        ...state,
+        isDeleted: false,
+      };
+    case UPDATE_PRODUCT_RESET:
+      return {
+        ...state,
+        isUpdated: false,
+      };
     case CLEAR_ERRORS:
       return {
         ...state,
