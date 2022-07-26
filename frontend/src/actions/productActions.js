@@ -123,7 +123,7 @@ export const getAdminProduct = () => async (dispatch) => {
       const config = {
         headers: { "Content-Type": "application/json" },
       };
-  
+      
       const { data } = await axios.put(
         `/api/v1/admin/product/${id}`,
         productData,

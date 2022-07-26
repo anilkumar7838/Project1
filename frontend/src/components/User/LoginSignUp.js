@@ -84,9 +84,7 @@ const LoginSignUp = ({location}) => {
     }
 
     if (userResponse.isAuthenticated) {
-      // console.log(redirect);
       navigate(`/${redirect}`);
-      // navigate(`/account`);
     }
  
   }, [dispatch, userResponse.error,alert, userResponse.isAuthenticated, redirect]);

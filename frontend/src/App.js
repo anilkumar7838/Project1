@@ -30,6 +30,8 @@ import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 import Dashboard from "./components/Admin/Dashboard";
 import ProductList from "./components/Admin/ProductList";
+import NewProduct from "./components/Admin/NewProduct";
+import UpdateProduct from "./components/Admin/UpdateProduct";
 
 function App() {
   // const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -155,6 +157,22 @@ function App() {
         element={
           <ProtectedRoute isAdmin={true}>
             <ProductList />
+          </ProtectedRoute>
+        }
+        />
+      <Route
+        path="/admin/product"
+        element={
+          <ProtectedRoute isAdmin={true}>
+            <NewProduct />
+          </ProtectedRoute>
+        }
+        />
+      <Route
+        path="/admin/product/:id"
+        element={
+          <ProtectedRoute isAdmin={true}>
+            <UpdateProduct/>
           </ProtectedRoute>
         }
         />

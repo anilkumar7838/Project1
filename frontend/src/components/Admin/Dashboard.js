@@ -14,7 +14,7 @@ import MetaData from "../views/metaData";
 const Dashboard = () => {
   const dispatch = useDispatch();
 
-  // const { products } = useSelector((state) => state.products);
+  const { products } = useSelector((state) => state.products);
 
   // const { orders } = useSelector((state) => state.allOrders);
 
@@ -22,18 +22,18 @@ const Dashboard = () => {
 
   let outOfStock = 2;
 
-  // products &&
-  //   products.forEach((item) => {
-  //     if (item.Stock === 0) {
-  //       outOfStock += 1;
-  //     }
-  //   });
+  products &&
+    products.forEach((item) => {
+      if (item.Stock === 0) {
+        outOfStock += 1;
+      }
+    });
 
-  // useEffect(() => {
-    // dispatch(getAdminProduct());
+  useEffect(() => {
+    dispatch(getAdminProduct());
     // dispatch(getAllOrders());
     // dispatch(getAllUsers());
-  // }, [dispatch]);
+  }, [dispatch]);
 
   let totalAmount = 4000;
   // orders &&
@@ -59,8 +59,7 @@ const Dashboard = () => {
       {
         backgroundColor: ["#00A6B4", "#6800B4"],
         hoverBackgroundColor: ["#4B5000", "#35014F"],
-        // data: [outOfStock, products.length - outOfStock],
-        data: [2,10],
+        data: [outOfStock, products.length - outOfStock],
       },
     ],
   };
@@ -79,18 +78,20 @@ const Dashboard = () => {
             </p>
           </div>
           <div className="dashboardSummaryBox2">
-            {/* <Link to="/admin/products">
+            <Link to="/admin/products">
               <p>Product</p>
               <p>{products && products.length}</p>
-            </Link> */}
-            {/* <Link to="/admin/orders">
+            </Link>
+            <Link to="/admin/orders">
               <p>Orders</p>
-              <p>{orders && orders.length}</p>
-            </Link> */}
-            {/* <Link to="/admin/users">
+              <p>12</p>
+              {/* <p>{orders && orders.length}</p> */}
+            </Link>
+            <Link to="/admin/users">
               <p>Users</p>
-              <p>{users && users.length}</p>
-            </Link> */}
+              <p>200</p>
+              {/* <p>{users && users.length}</p> */}
+            </Link>
           </div>
         </div>
 

@@ -10,8 +10,8 @@
 }
 .sidebar2 > a > img {
   margin-top: 12px;
-  margin-left: 4vmax;
-  width: 60%;
+  margin-left: 1vmax;
+  width: 90%;
   transition: all 0.5s;
 }
 
@@ -47,7 +47,7 @@
     display: flex;
   }
   .sidebar2 > a > img {
-    width: 40%;
+    width: 100%;
     margin:12px auto;
     transition: all 0.5s;
   }

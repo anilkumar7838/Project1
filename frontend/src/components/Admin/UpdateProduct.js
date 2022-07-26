@@ -4,20 +4,23 @@ import {
   clearErrors,
   updateProduct,
   getProductDetails,
-} from "../../actions/productAction";
+} from "../../actions/productActions";
 import { useAlert } from "react-alert";
-import { Button } from "@material-ui/core";
-import MetaData from "../layout/MetaData";
-import AccountTreeIcon from "@material-ui/icons/AccountTree";
-import DescriptionIcon from "@material-ui/icons/Description";
-import StorageIcon from "@material-ui/icons/Storage";
-import SpellcheckIcon from "@material-ui/icons/Spellcheck";
-import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
-import SideBar from "./Sidebar";
+import { Button } from "@mui/material";
+import MetaData from "../views/metaData";
+import AccountTreeIcon from "@mui/icons-material/AccountTree";
+import DescriptionIcon from "@mui/icons-material/Description";
+import StorageIcon from "@mui/icons-material/Storage";
+import SpellcheckIcon from "@mui/icons-material/Spellcheck";
+import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import SideBar from "./Sidebar2";
 import { UPDATE_PRODUCT_RESET } from "../../constants/productConstants";
+import { useNavigate, useParams } from "react-router-dom";
 
-const UpdateProduct = ({ history, match }) => {
+const UpdateProduct = () => {
   const dispatch = useDispatch();
+  const navigate=useNavigate();
+  const params=useParams();
   const alert = useAlert();
 
   const { error, product } = useSelector((state) => state.productDetails);
@@ -47,7 +50,7 @@ const UpdateProduct = ({ history, match }) => {
     "SmartPhones",
   ];
 
-  const productId = match.params.id;
+  const productId = params.id;
 
   useEffect(() => {
     if (product && product._id !== productId) {
@@ -72,14 +75,13 @@ const UpdateProduct = ({ history, match }) => {
 
     if (isUpdated) {
       alert.success("Product Updated Successfully");
-      history.push("/admin/products");
+      navigate("/admin/products");
       dispatch({ type: UPDATE_PRODUCT_RESET });
     }
   }, [
     dispatch,
     alert,
     error,
-    history,
     isUpdated,
     productId,
     product,
@@ -89,27 +91,28 @@ const UpdateProduct = ({ history, match }) => {
   const updateProductSubmitHandler = (e) => {
     e.preventDefault();
 
-    const myForm = new FormData();
+    // const myForm = new FormData();
 
-    myForm.set("name", name);
-    myForm.set("price", price);
-    myForm.set("description", description);
-    myForm.set("category", category);
-    myForm.set("Stock", Stock);
+    // myForm.set("name", name);
+    // myForm.set("price", price);
+    // myForm.set("description", description);
+    // myForm.set("category", category);
+    // myForm.set("Stock", Stock);
 
-    images.forEach((image) => {
-      myForm.append("images", image);
-    });
-    dispatch(updateProduct(productId, myForm));
+    // images.forEach((image) => {
+    //   myForm.append("images", image);
+    // });
+
+    const data={name,price,description,category,Stock,images}
+    dispatch(updateProduct(productId, data));
   };
 
   const updateProductImagesChange = (e) => {
     const files = Array.from(e.target.files);
-
     setImages([]);
     setImagesPreview([]);
     setOldImages([]);
-
+    
     files.forEach((file) => {
       const reader = new FileReader();
 
@@ -135,7 +138,7 @@ const UpdateProduct = ({ history, match }) => {
             encType="multipart/form-data"
             onSubmit={updateProductSubmitHandler}
           >
-            <h1>Create Product</h1>
+            <h1>Update Product</h1>
 
             <div>
               <SpellcheckIcon />
@@ -224,7 +227,7 @@ const UpdateProduct = ({ history, match }) => {
               type="submit"
               disabled={loading ? true : false}
             >
-              Create
+              Update
             </Button>
           </form>
         </div>

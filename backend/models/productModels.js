@@ -11,7 +11,6 @@ const productSchema = new mongoose.Schema({
     },price:{
         type:Number,
         required:[true,"Please Enter Product Price"],
-        maxLength:[8,"Price cannot exceed 8 Figures"]
     },ratings:{
         type:Number,
         default:0
@@ -34,7 +33,6 @@ const productSchema = new mongoose.Schema({
     Stock:{
         type:Number,
         required:[true,"Please Enter Product Category"],
-        maxLength:[4,"Stock cannot exceed 4 figures"],
         default:1
     },
     numOfReviews:{
