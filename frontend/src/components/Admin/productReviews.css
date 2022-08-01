@@ -7,7 +7,7 @@
 }
 
 .productReviewsForm {
-  width: 20rem;
+  width: 30vmax;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,6 +28,9 @@
   align-items: center;
   margin: 2rem;
 }
+.productReviewsForm > div:focus {
+  border:2px solid red;
+}
 .productReviewsForm > div > input {
   padding: 1vmax 4vmax;
   padding-right: 1vmax;
@@ -44,6 +47,13 @@
   transform: translateX(1vmax);
   font-size: 1.6vmax;
   color: rgba(0, 0, 0, 0.623);
+}
+
+.greenColor{
+  color:green !important;
+}
+.redColor{
+  color: red !important;
 }
 
 @media screen and (max-width: 600px) {

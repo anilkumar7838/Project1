@@ -1,22 +1,24 @@
 import React, { Fragment, useEffect, useState } from "react";
-import MetaData from "../layout/MetaData";
-import { Link } from "react-router-dom";
-import { Typography } from "@material-ui/core";
-import SideBar from "./Sidebar";
+import MetaData from "../views/metaData";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { Typography } from "@mui/material";
+import SideBar from "./Sidebar2";
 import {
   getOrderDetails,
   clearErrors,
   updateOrder,
 } from "../../actions/orderAction";
 import { useSelector, useDispatch } from "react-redux";
-import Loader from "../layout/Loader/Loader";
+import Loader from "../views/Loader/Loader";
 import { useAlert } from "react-alert";
-import AccountTreeIcon from "@material-ui/icons/AccountTree";
-import { Button } from "@material-ui/core";
+import AccountTreeIcon from "@mui/icons-material/AccountTree";
+import { Button } from "@mui/material";
 import { UPDATE_ORDER_RESET } from "../../constants/orderConstants";
 import "./processOrder.css";
 
-const ProcessOrder = ({ history, match }) => {
+const ProcessOrder = () => {
+  const navigate=useNavigate();
+  const params = useParams();
   const { order, error, loading } = useSelector((state) => state.orderDetails);
   const { error: updateError, isUpdated } = useSelector((state) => state.order);
 
@@ -27,7 +29,7 @@ const ProcessOrder = ({ history, match }) => {
 
     myForm.set("status", status);
 
-    dispatch(updateOrder(match.params.id, myForm));
+    dispatch(updateOrder(params.id, myForm));
   };
 
   const dispatch = useDispatch();
@@ -49,8 +51,8 @@ const ProcessOrder = ({ history, match }) => {
       dispatch({ type: UPDATE_ORDER_RESET });
     }
 
-    dispatch(getOrderDetails(match.params.id));
-  }, [dispatch, alert, error, match.params.id, isUpdated, updateError]);
+    dispatch(getOrderDetails(params.id));
+  }, [dispatch, alert, error, params.id, isUpdated, updateError]);
 
   return (
     <Fragment>
@@ -78,7 +80,7 @@ const ProcessOrder = ({ history, match }) => {
                     <div>
                       <p>Phone:</p>
                       <span>
-                        {order.shippingInfo && order.shippingInfo.phoneNo}
+                        {order && order.shippingInfo && order.shippingInfo.phoneNo}
                       </span>
                     </div>
                     <div>
@@ -164,7 +166,7 @@ const ProcessOrder = ({ history, match }) => {
                     <AccountTreeIcon />
                     <select onChange={(e) => setStatus(e.target.value)}>
                       <option value="">Choose Category</option>
-                      {order.orderStatus === "Processing" && (
+                      {order.orderStatus === "Processing..." && (
                         <option value="Shipped">Shipped</option>
                       )}
 

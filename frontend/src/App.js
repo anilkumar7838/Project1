@@ -32,6 +32,14 @@ import Dashboard from "./components/Admin/Dashboard";
 import ProductList from "./components/Admin/ProductList";
 import NewProduct from "./components/Admin/NewProduct";
 import UpdateProduct from "./components/Admin/UpdateProduct";
+import OrderList from "./components/Admin/OrderList";
+import UserList from "./components/Admin/UsersList";
+import ProcessOrder from "./components/Admin/ProcessOrder";
+import UpdateUser from "./components/Admin/UpdateUser";
+import ProductReviews from "./components/Admin/ProductReviews";
+import Contact from "./components/views/Contact/Contact"
+import About from "./components/views/About/About"
+import NotFound from "./components/views/Not Found/NotFound"
 
 function App() {
   // const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -61,6 +69,8 @@ function App() {
       <Routes>
         <Route path="product/:id" element={<ProductDetails />} />
         <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/products" element={<Products />} />
         <Route path="/products/:keyword" element={<Products />} />
         <Route path="/search" element={<Search />} />
@@ -175,6 +185,51 @@ function App() {
             <UpdateProduct/>
           </ProtectedRoute>
         }
+        />
+      <Route
+        path="/admin/orders"
+        element={
+          <ProtectedRoute isAdmin={true}>
+            <OrderList/>
+          </ProtectedRoute>
+        }
+        />
+      <Route
+        path="/admin/order/:id"
+        element={
+          <ProtectedRoute isAdmin={true}>
+            <ProcessOrder/>
+          </ProtectedRoute>
+        }
+        />
+      <Route
+        path="/admin/users"
+        element={
+          <ProtectedRoute isAdmin={true}>
+            <UserList/>
+          </ProtectedRoute>
+        }
+        />
+      <Route
+        path="/admin/user/:id"
+        element={
+          <ProtectedRoute isAdmin={true}>
+            <UpdateUser/>
+          </ProtectedRoute>
+        }
+        />
+        <Route
+          path="/admin/reviews"
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <ProductReviews/>
+            </ProtectedRoute>
+          }
+          />
+          <Route
+          component={
+            window.location.pathname === "/process/payment" ? null : NotFound
+          }
         />
       </Routes>
     </Router>

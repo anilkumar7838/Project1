@@ -16,9 +16,9 @@ const Dashboard = () => {
 
   const { products } = useSelector((state) => state.products);
 
-  // const { orders } = useSelector((state) => state.allOrders);
+  const { orders } = useSelector((state) => state.allOrders);
 
-  // const { users } = useSelector((state) => state.allUsers);
+  const { users } = useSelector((state) => state.allUsers);
 
   let outOfStock = 2;
 
@@ -31,15 +31,15 @@ const Dashboard = () => {
 
   useEffect(() => {
     dispatch(getAdminProduct());
-    // dispatch(getAllOrders());
-    // dispatch(getAllUsers());
+    dispatch(getAllOrders());
+    dispatch(getAllUsers());
   }, [dispatch]);
 
-  let totalAmount = 4000;
-  // orders &&
-  //   orders.forEach((item) => {
-  //     totalAmount += item.totalPrice;
-  //   });
+  let totalAmount = 0;
+  orders &&
+    orders.forEach((item) => {
+      totalAmount += item.totalPrice;
+    });
 
   const lineState = {
     labels: ["Initial Amount", "Amount Earned"],
@@ -84,13 +84,11 @@ const Dashboard = () => {
             </Link>
             <Link to="/admin/orders">
               <p>Orders</p>
-              <p>12</p>
-              {/* <p>{orders && orders.length}</p> */}
+              <p>{orders && orders.length}</p>
             </Link>
             <Link to="/admin/users">
               <p>Users</p>
-              <p>200</p>
-              {/* <p>{users && users.length}</p> */}
+              <p>{users && users.length}</p>
             </Link>
           </div>
         </div>

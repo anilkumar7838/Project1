@@ -38,7 +38,7 @@ const ProductDetails = () => {
   const [quantity, setQuantity] = useState(1);
   const [open, setOpen] = useState(false);
   const [rating, setRating] = useState(0);
-  const [comment, setComment] = useState("");
+  const [comments, setComment] = useState("");
 
   const increaseQuantity = () => {
     if (product.Stock <= quantity) {
@@ -69,8 +69,9 @@ const ProductDetails = () => {
     const myForm = new FormData();
 
     myForm.set("rating", rating);
-    myForm.set("comment", comment);
+    myForm.set("comment", comments);
     myForm.set("productId", params.id);
+
 
     dispatch(newReview(myForm));
 
@@ -181,7 +182,7 @@ const ProductDetails = () => {
                 className="submitDialogTextArea"
                 cols="30"
                 rows="5"
-                value={comment}
+                value={comments}
                 onChange={(e) => setComment(e.target.value)}
               ></textarea>
             </DialogContent>

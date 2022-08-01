@@ -236,11 +236,11 @@ exports.updateUserRole = catchAsyncErrors(async(req,res,next)=>{
         email:req.body.email,
         role:req.body.role
     }
-    
-    const user = await User.findByIdAndUpdate(req.params.id,newUserData,{new:true,runValidators:true,useFindAndModify:false});
+
+    await User.findByIdAndUpdate(req.params.id,newUserData,{new:true,runValidators:true,useFindAndModify:false});
     
     res.status(200).json({
-        succes:true,
+        success:true,
         message:"Successfully update Role",
     })
 });
@@ -249,16 +249,17 @@ exports.updateUserRole = catchAsyncErrors(async(req,res,next)=>{
 
 exports.deleteUser = catchAsyncErrors(async(req,res,next)=>{
     const user = await User.findById(req.params.id);
-    // we will remove Cloudinary later
 
     if(!user){
         return next(new ErrorHandler(`User does not exist with Id: ${req.params.id}`,400));
     }
-
+    const imageId = user.avatar.public_id;
+    await cloudinary.v2.uploader.destroy(imageId);
+    
     await user.remove();
     
     res.status(200).json({
-        succes:true,
+        success:true,
         message:"User Deleted Successfully",
     }); 
 });

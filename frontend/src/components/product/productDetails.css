@@ -192,11 +192,11 @@
   }
   .reviewCard > p {
     color: rgba(0, 0, 0, 0.836);
-    font: 600 0.9vmax "Roboto";
+    font: 600 1vmax "Roboto";
   }
   .reviewCardComment {
     color: rgba(0, 0, 0, 0.445);
-    font: 300 0.8vmax cursive;
+    font: 300 1.3vmax cursive;
   }
   
   .noReviews {

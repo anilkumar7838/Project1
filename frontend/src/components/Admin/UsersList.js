@@ -1,20 +1,20 @@
 import React, { Fragment, useEffect } from "react";
-import { DataGrid } from "@material-ui/data-grid";
+import { DataGrid } from "@mui/x-data-grid";
 import "./productList.css";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAlert } from "react-alert";
-import { Button } from "@material-ui/core";
-import MetaData from "../layout/MetaData";
-import EditIcon from "@material-ui/icons/Edit";
-import DeleteIcon from "@material-ui/icons/Delete";
-import SideBar from "./Sidebar";
+import { Button } from "@mui/material";
+import MetaData from "../views/metaData";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
+import SideBar from "./Sidebar2";
 import { getAllUsers, clearErrors, deleteUser } from "../../actions/userAction";
 import { DELETE_USER_RESET } from "../../constants/userConstants";
 
-const UsersList = ({ history }) => {
+const UsersList = () => {
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const alert = useAlert();
 
   const { error, users } = useSelector((state) => state.allUsers);
@@ -39,15 +39,16 @@ const UsersList = ({ history }) => {
       alert.error(deleteError);
       dispatch(clearErrors());
     }
-
+    console.log(isDeleted);
     if (isDeleted) {
+      console.log(message);
       alert.success(message);
-      history.push("/admin/users");
+      navigate("/admin/users");
       dispatch({ type: DELETE_USER_RESET });
     }
 
     dispatch(getAllUsers());
-  }, [dispatch, alert, error, deleteError, history, isDeleted, message]);
+  }, [dispatch, alert, error, deleteError, isDeleted, message]);
 
   const columns = [
     { field: "id", headerName: "User ID", minWidth: 180, flex: 0.8 },

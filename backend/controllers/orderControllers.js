@@ -3,6 +3,7 @@ const Product = require("../models/productModels");
 const ErrorHandler = require("../utils/errorhandler");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 
+
 exports.newOrder = catchAsyncErrors(async (req, res, next) => {
   const {
     shippingInfo,
@@ -78,8 +79,8 @@ exports.getAllOrders = catchAsyncErrors(async(req,res,next)=>{
 // updateOrder status ---admin
 exports.updateOrderStatus = catchAsyncErrors(async(req,res,next)=>{
   const order = await Order.findById(req.params.id);
- 
-  if(!orders){
+
+  if(!order){
     return next(new ErrorHandler("Order not found with this Id",404));
   }
 
@@ -87,9 +88,11 @@ exports.updateOrderStatus = catchAsyncErrors(async(req,res,next)=>{
     return next(new ErrorHandler("You have already delivered this order",400));
   }
 
-  order.orderItems.forEach(async(odr)=>{
-    await updateStock(odr.product,odr.quantity);
-  })
+  if(req.body.status === "Shipped") {
+    order.orderItems.forEach(async (o) => {
+      await updateStock(o.product, o.quantity);
+    });
+  }
 
   order.orderStatus = req.body.status;
   if(req.body.status==="Delivered"){
@@ -105,8 +108,10 @@ exports.updateOrderStatus = catchAsyncErrors(async(req,res,next)=>{
 
 });
 
+// Error
 async function updateStock(id,quantity){
-  const product = await Product.findById(id);
+  let product = await Product.findById(id);
+  // console.log(product,quantity.product._id);
   product.Stock-=quantity;
 
   await product.save({validateBeforeSave:false});
