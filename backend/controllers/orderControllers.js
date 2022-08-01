@@ -90,7 +90,10 @@ exports.updateOrderStatus = catchAsyncErrors(async(req,res,next)=>{
 
   if(req.body.status === "Shipped") {
     order.orderItems.forEach(async (o) => {
-      await updateStock(o.product, o.quantity);
+      let product = await Product.findById(o.product);
+      product.Stock-=quantity;
+
+      await product.save({validateBeforeSave:false});
     });
   }
 
@@ -109,13 +112,13 @@ exports.updateOrderStatus = catchAsyncErrors(async(req,res,next)=>{
 });
 
 // Error
-async function updateStock(id,quantity){
-  let product = await Product.findById(id);
-  // console.log(product,quantity.product._id);
-  product.Stock-=quantity;
+// async function updateStock(id,quantity){
+//   let product = await Product.findById(id);
+//   // console.log(product,quantity.product._id);
+//   product.Stock-=quantity;
 
-  await product.save({validateBeforeSave:false});
-}
+//   await product.save({validateBeforeSave:false});
+// }
 
 // deleteOrder ---admin
 exports.deleteOrders = catchAsyncErrors(async(req,res,next)=>{

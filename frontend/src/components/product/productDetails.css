@@ -30,8 +30,8 @@
   
   .CarouselImage {
     margin-left: 25%;
-    /* padding-bottom: -25px; */
     width: 20vmax;
+    height: 100%;
   }
   
   .detailsBlock-1 > h2 {
@@ -248,9 +248,8 @@
     }
     .detailsBlock-3-1-1 > button {
       padding: 1vmax;
+      width: 4vmax;
       align-items: center;
-      padding-right: 1.4vmax;
-      width: 1.5vmax;
     }
     
     .detailsBlock-3-1-1 > input {
@@ -297,14 +296,14 @@
   
   @media screen and (max-width: 420px) {
     .CarouselImage{
-      margin: 12px 30%;
+      margin: 12px 35%;
       padding: 0 auto;
     }
 
   }
-  @media screen and (max-width: 280px) {
+  @media screen and (max-width: 300px) {
     .CarouselImage{
-      margin: 12px 20%;
+      margin: 12px 30%;
       padding: 0 auto;
     }
 
