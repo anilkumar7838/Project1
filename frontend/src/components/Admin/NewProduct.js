@@ -33,7 +33,7 @@ const NewProduct = () => {
     "Laptop",
     "Footwear",
     "Bottom",
-    "Tops",
+    "Top",
     "Attire",
     "Camera",
     "SmartPhones",

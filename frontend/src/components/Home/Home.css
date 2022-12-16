@@ -12,6 +12,7 @@
 .banner > h1{
     margin: 1vmax;
     font:600 2.5vmax "Roboto";
+    margin-bottom: 5vmax;
 }
 
 .banner > p{
@@ -20,7 +21,6 @@
 
 .banner > a > button{
     z-index: 1.4;
-    margin-top: 5vmax;
     cursor: pointer;
     background-color: white;
     border: 2px solid white;

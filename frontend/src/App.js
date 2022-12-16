@@ -11,7 +11,7 @@ import Search from "./components/product/search.js";
 import LoginSignUp from "./components/User/LoginSignUp";
 import store from "./store";
 import { loadUser } from "./actions/userAction";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import Profile from "./components/User/Profile";
 import ProtectedRoute from "./components/Route/protectedRoute";
 import UpdateProfile from "./components/User/UpdateProfile";
@@ -61,6 +61,8 @@ function App() {
     store.dispatch(loadUser());
     getStripeApiKey();
   }, []);
+
+  // window.addEventListener("contextmenu",(e)=>e.preventDefault());
 
   return (
     <div className="app">
@@ -226,10 +228,9 @@ function App() {
             </ProtectedRoute>
           }
           />
-          <Route
-          component={
-            window.location.pathname === "/process/payment" ? null : NotFound
-          }
+        <Route
+          path="*"
+          element={window.location.pathname === "/process/payment" ? null : <NotFound/>}
         />
       </Routes>
     </Router>

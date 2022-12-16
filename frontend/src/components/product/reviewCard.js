@@ -8,13 +8,14 @@ const ReviewCard = ({ review }) => {
     readOnly: true,
     precision: 0.5,
   };
+  console.log(review.comments);
 
   return (
     <div className="reviewCard">
       <img src={profilePng} alt="User" />
       <p style={{fontSize:"1.6vmax"}}>{review.name}</p>
       <Rating {...options} style={{fontSize:"2vmax"}} />
-      <span className="reviewCardComment">{review.comment}</span>
+      <span className="reviewCardComment">{review.comments}</span>
     </div>
   );
 };

@@ -61,7 +61,7 @@ const ProductDetails = () => {
   }
 
   const submitReviewToggle = () => {
-    console.log("hello");
+    // console.log("hello");
     open ? setOpen(false) : setOpen(true);
   };
 
@@ -69,9 +69,8 @@ const ProductDetails = () => {
     const myForm = new FormData();
 
     myForm.set("rating", rating);
-    myForm.set("comment", comments);
+    myForm.set("comments", comments);
     myForm.set("productId", params.id);
-
 
     dispatch(newReview(myForm));
 

@@ -28,7 +28,7 @@ const Product = () => {
   const keyword=params.keyword;
 
   const [currentPage,setCurrentPage] = useState(1);
-  const [price,setPrice] = useState([0,25000])
+  const [price,setPrice] = useState([0,300000])
   const [category,setCategory] = useState("")
   const [ratings,setRatings] = useState(0)
 
@@ -74,7 +74,7 @@ const Product = () => {
               aria-label="Small"
               aria-labelledby="range-slider"
               min={0}
-              max={25000}
+              max={300000}
               />
 
             <Typography>Categories</Typography>

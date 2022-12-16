@@ -5,6 +5,10 @@
     scroll-behavior: smooth;
 }
 
+body{
+    cursor: url("./images/cursor.png"),auto;
+}
+
 /* Chrome safari edge opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button{
