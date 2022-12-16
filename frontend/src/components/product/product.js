@@ -42,11 +42,13 @@ const Product = () => {
     setPrice(newPrice);
   }
 
+
   useEffect(()=>{
     if(productResponse.error){
       alert.error(productResponse.error);
       dispatch(clearErrors());
     }
+    // console.log(productResponse.productCount);
     dispatch(getProduct(keyword,currentPage,price,category,ratings));
   },[dispatch,alert,productResponse.error,keyword,currentPage,price,category,ratings])
   return (
@@ -103,7 +105,7 @@ const Product = () => {
 
             </div>
           {
-          productResponse.productCount && productResponse.productCount>0 && productResponse.resultPerPage < productResponse.productCount?
+          productResponse.productCount && productResponse.productCount>0 && productResponse.resultPerPage < productResponse.productCount ?
           <div className="paginationBox">
             <Pagination activePage={currentPage}
             itemsCountPerPage={productResponse.resultPerPage}

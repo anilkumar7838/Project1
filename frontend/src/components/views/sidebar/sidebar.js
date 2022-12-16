@@ -143,7 +143,7 @@ const Sidebar = () => {
           </List>
 
           <Divider className="divider" />
-          <List
+          {/* <List
             style={{ marginLeft: "8px", marginRight: "8px", marginTop: "15px" }}
           >
             <ListItem className="list_item" onClick={closeNav}>
@@ -165,7 +165,7 @@ const Sidebar = () => {
               </div>
             </ListItem>
           </List>
-          <Divider className="divider" />
+          <Divider className="divider" /> */}
         </div>
       </div>
     );
