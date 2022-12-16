@@ -56,11 +56,13 @@ const Product = () => {
       {productResponse.loading ? <Loader/> : 
       <Fragment>
         <MetaData title="Products--UnLimitIt"/>
+        <div className="mainProduct">
+
           <h2 className="productsHeading">Products</h2>
           <div className="products">
             {productResponse.products && productResponse.products.map((product)=>(
               <ProductCard key={product._id} product={product}/>
-            ))}
+              ))}
           </div>
 
             <div className="filterBox">
@@ -100,12 +102,12 @@ const Product = () => {
                 aria-labelledby="continuous-slider"
                 min={0}
                 max={5}
-              />
+                />
             </fieldset>
 
             </div>
           {
-          productResponse.productCount && productResponse.productCount>0 && productResponse.resultPerPage < productResponse.productCount ?
+            productResponse.productCount && productResponse.productCount>0 && productResponse.resultPerPage < productResponse.productCount ?
           <div className="paginationBox">
             <Pagination activePage={currentPage}
             itemsCountPerPage={productResponse.resultPerPage}
@@ -121,6 +123,7 @@ const Product = () => {
             activeLinkClass="pageLinkActive"/>
            </div>:null
           }
+      </div>
       </Fragment>}
     </>
   )

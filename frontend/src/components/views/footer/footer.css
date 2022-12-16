@@ -1,8 +1,6 @@
 footer {
-    position: relative;
-    bottom: 0;
-    width: 100%;
-    padding: 10px;
+    margin-top: 10vmax;
+    padding: 2vmax;
     background-color: rgb(34, 33, 33);
     color: white;
     display: flex;
@@ -27,7 +25,7 @@ footer {
   }
   .leftfooter > img {
     width: 10vmax;
-    margin: 5px;
+    margin: 1vmax;
     cursor: pointer;
   }
   

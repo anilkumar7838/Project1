@@ -1,3 +1,7 @@
+.mainProduct{
+  min-height:70vmax;
+}
+
 .productsHeading {
     margin: 2vmax auto;
     margin-top: 20px;
